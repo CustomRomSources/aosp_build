@@ -1505,7 +1505,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): KEY_CERT_PAIR := $(DEFAULT_KEY_CERT_PAIR)
 
 $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
 	@echo "Package OTA: $@"
-	$(hide) MKBOOTIMG=$(MKBOOTIMG) \
+	$(hide) MKBOOTIMG=$(BOARD_CUSTOM_BOOTIMG_MK) \
 	   ./build/tools/releasetools/ota_from_target_files -v \
 	   --block \
 	   -p $(HOST_OUT) \
@@ -1534,7 +1534,7 @@ INTERNAL_UPDATE_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
 
 $(INTERNAL_UPDATE_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
 	@echo "Package: $@"
-	$(hide) MKBOOTIMG=$(MKBOOTIMG) \
+	$(hide) MKBOOTIMG=$(BOARD_CUSTOM_BOOTIMG_MK) \
 	   ./build/tools/releasetools/img_from_target_files -v \
 	   -p $(HOST_OUT) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
